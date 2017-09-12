@@ -1,21 +1,17 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace DataVault.DataModels
 {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-    
+
     public partial class User
     {
-        public User()
-        {
-            RenderTaskSet = new HashSet<RenderTask>();
-        }
-
         public int Id { get; set; }
 
         [Required]
+        [Index]
         [StringLength(200)]
         public string Name { get; set; }
 
@@ -23,8 +19,9 @@ namespace DataVault.DataModels
         [StringLength(250)]
         public string Email { get; set; }
 
-        public decimal Balance { get; set; }
+        [Range(0, Int32.MaxValue)]
+        public decimal Balance { get; set; } = 5;
         
-        public virtual ICollection<RenderTask> RenderTaskSet { get; set; }
+        public virtual ICollection<RenderTask> RenderTaskSet { get; set; } = new HashSet<RenderTask>();
     }
 }

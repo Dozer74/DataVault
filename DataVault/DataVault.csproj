@@ -82,6 +82,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="connections.local.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="connections.default.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
