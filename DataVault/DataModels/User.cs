@@ -17,9 +17,10 @@ namespace DataVault.DataModels
 
         [Required]
         [StringLength(250)]
+        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$",ErrorMessage = "Электронная почта указана в неверном формате")]
         public string Email { get; set; }
 
-        [Range(0, Int32.MaxValue)]
+        [Range(0, Int32.MaxValue,ErrorMessage = "Баланс пользователя не может быть отрицательным или превышать Int32.MaxValue")]
         public decimal Balance { get; set; } = 5;
         
         public virtual ICollection<Project> Projects { get; set; } = new HashSet<Project>();

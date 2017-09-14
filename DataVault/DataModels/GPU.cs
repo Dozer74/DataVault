@@ -23,5 +23,6 @@ namespace DataVault.DataModels
         public GpuManufactor Manufactor { get; set; }
 
         public virtual ICollection<Node> NodeSet { get; set; } = new HashSet<Node>();
+
     }
 }
