@@ -31,8 +31,8 @@ namespace DataVault.DataModels
 
         [Required]
         public virtual Software Software { get; set; }
-
+        
         [Required]
-        public virtual User User { get; set; }
+        public virtual Project Project { get; set; }
     }
 }

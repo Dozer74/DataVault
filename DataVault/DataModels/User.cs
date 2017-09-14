@@ -22,6 +22,6 @@ namespace DataVault.DataModels
         [Range(0, Int32.MaxValue)]
         public decimal Balance { get; set; } = 5;
         
-        public virtual ICollection<RenderTask> RenderTaskSet { get; set; } = new HashSet<RenderTask>();
+        public virtual ICollection<Project> Projects { get; set; } = new HashSet<Project>();
     }
 }

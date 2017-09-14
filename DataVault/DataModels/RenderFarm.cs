@@ -19,7 +19,9 @@ namespace DataVault.DataModels
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            
+            modelBuilder.Entity<Project>()
+                .Property(p => p.Description)
+                .IsOptional();
         }
     }
 }
