@@ -1,4 +1,6 @@
 using System;
+using System.IO;
+using System.Linq;
 
 namespace DataVault.DataModels
 {
@@ -8,7 +10,6 @@ namespace DataVault.DataModels
 
     public partial class GPU
     {
-        [Key]
         public int Id { get; set; }
 
         [Required]
@@ -24,5 +25,10 @@ namespace DataVault.DataModels
 
         public virtual ICollection<Node> NodeSet { get; set; } = new HashSet<Node>();
 
+
+        public override string ToString()
+        {
+            return $"{Manufactor?.Name} {Model}";
+        }
     }
 }
