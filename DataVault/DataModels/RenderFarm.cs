@@ -40,7 +40,7 @@ namespace DataVault.DataModels
         }
     }
 
-    public class DbInitializer : DropCreateDatabaseAlways<RenderFarm>
+    public class DbInitializer : DropCreateDatabaseIfModelChanges<RenderFarm>
     {
         readonly Random rand = new Random(42);
 
@@ -136,34 +136,6 @@ namespace DataVault.DataModels
 
             var projects = File.ReadAllLines("projects.txt")
                 .Select(p => new Project {Name = p, User = users[rand.Next(users.Length)]}).ToArray();
-            /*var projects = new[]
-            {
-                new Project {Name = "Call of duty", User = users[0]},
-                new Project {Name = "Project X", User = users[0]},
-                new Project {Name = "Project X 2", User = users[0]},
-
-                new Project {Name = "Тест", User = users[1]},
-                new Project {Name = "Видео", User = users[1]},
-                new Project {Name = "HD Видео", User = users[1]},
-
-                new Project {Name = "Котик 2017", Description = "Рендерим кота", User = users[2]},
-                new Project {Name = "Котик 2", Description = "Мой кот", User = users[2]},
-                new Project {Name = "Пес", Description = "А теперь рендерим собачку", User = users[2]},
-
-                new Project {Name = "Avangers", User = users[3]},
-                new Project {Name = "Avengers 2", User = users[3]},
-                new Project {Name = "Avengers 3", User = users[3]},
-
-                new Project {Name = "Batman", User = users[4]},
-                new Project {Name = "Batman Return", User = users[4]},
-                new Project {Name = "Batman Back", User = users[4]},
-
-                new Project {Name = "Сумерки", User = users[5]},
-                new Project {Name = "Автопилот", User = users[5]},
-
-                new Project {Name = "Российская комадия", Description = "Очень смешная (нет)", User = users[6]},
-                new Project {Name = "Ещё одна российская комадия", Description = "Тоже смешная", User = users[6]},
-            };*/
 
             var films = File.ReadAllLines("films2.txt");
             var descs = File.ReadAllLines("desc.txt");
