@@ -37,6 +37,16 @@ namespace DataVault.DataModels
             modelBuilder.Entity<Node>()
                 .Property(p => p.Description)
                 .IsOptional();
+
+            // generate stored procedures
+            modelBuilder.Entity<User>().MapToStoredProcedures();
+            modelBuilder.Entity<Project>().MapToStoredProcedures();
+            modelBuilder.Entity<Node>().MapToStoredProcedures();
+            modelBuilder.Entity<GpuManufactor>().MapToStoredProcedures();
+            modelBuilder.Entity<GPU>().MapToStoredProcedures();
+            modelBuilder.Entity<RenderTask>().MapToStoredProcedures();
+            modelBuilder.Entity<Software>().MapToStoredProcedures();
+            modelBuilder.Entity<SoftwareDeveloper>().MapToStoredProcedures();
         }
     }
 
@@ -62,7 +72,7 @@ namespace DataVault.DataModels
                     {
                         Name = p,
                         Balance = rand.Next(100, 10000),
-                        Email = p.Replace(" ", "") + "@" + emails[rand.Next(emails.Length)]
+                        Email = emails[rand.Next(emails.Length)]
                     }
                 ).ToArray();
 
@@ -155,8 +165,7 @@ namespace DataVault.DataModels
                     StartTime = RandomDay()
                 };
             }
-
-
+            
             context.Users.AddRange(users);
             context.GpuManufactors.AddRange(gpuManufactors);
             context.Gpus.AddRange(gpus);
