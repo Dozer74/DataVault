@@ -40,7 +40,7 @@ namespace DataVault.DataModels
         }
     }
 
-    public class DbInitializer : DropCreateDatabaseIfModelChanges<RenderFarm>
+    public class DbInitializer : DropCreateDatabaseAlways<RenderFarm>
     {
         readonly Random rand = new Random(42);
 
@@ -55,16 +55,16 @@ namespace DataVault.DataModels
         {
             base.Seed(context);
 
-            var users = new[]
-            {
-                new User {Name = "FOX Inc.", Balance = 15000, Email = "foxArt@gmail.com"},
-                new User {Name = "Петров", Balance = 10, Email = "petya@gmail.com"},
-                new User {Name = "Иванов", Balance = 15, Email = "ivanov@ya.ru"},
-                new User {Name = "Sony Pictures", Balance = 12120, Email = "support@sony.com"},
-                new User {Name = "Warner Brothers", Balance = 25100, Email = "hello@vb.com"},
-                new User {Name = "Мегамакс", Balance = 500, Email = "mm@mm.ru"},
-                new User {Name = "Фонд кино", Balance = 1520, Email = "fond-kino@rambler.ru"},
-            };
+
+            var emails = File.ReadAllLines("email.txt");
+            var users = File.ReadAllLines("users.txt")
+                .Select(p => new User
+                    {
+                        Name = p,
+                        Balance = rand.Next(100, 10000),
+                        Email = p.Replace(" ", "") + "@" + emails[rand.Next(emails.Length)]
+                    }
+                ).ToArray();
 
             var gpuManufactors = new[]
             {
@@ -156,7 +156,7 @@ namespace DataVault.DataModels
                 };
             }
 
-            
+
             context.Users.AddRange(users);
             context.GpuManufactors.AddRange(gpuManufactors);
             context.Gpus.AddRange(gpus);

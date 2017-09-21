@@ -17,7 +17,8 @@ namespace DataVault.DataModels
 
         [Required]
         [StringLength(250)]
-        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$",ErrorMessage = "Электронная почта указана в неверном формате")]
+        [DataType(DataType.EmailAddress)]
+        //[RegularExpression(@"([\w\d\-]+(?:\.[\w\d\-]+)*)@((?:[\w\d\-]+\.)+\w{2,5})",ErrorMessage = "Электронная почта указана в неверном формате")]
         public string Email { get; set; }
 
         [Range(0, Int32.MaxValue,ErrorMessage = "Баланс пользователя не может быть отрицательным или превышать Int32.MaxValue")]

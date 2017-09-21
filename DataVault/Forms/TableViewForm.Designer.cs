@@ -41,7 +41,8 @@
             // 
             // dataGridView1
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoGenerateColumns = false;
             this.entityDataSource1.SetAutoLookup(this.dataGridView1, true);
@@ -49,7 +50,7 @@
             this.dataGridView1.DataSource = this.entityDataSource1;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(944, 462);
+            this.dataGridView1.Size = new System.Drawing.Size(975, 463);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             this.dataGridView1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView1_DataError);
@@ -60,9 +61,10 @@
             // 
             // btnSave
             // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSave.ImageKey = "save.png";
             this.btnSave.ImageList = this.imageList1;
-            this.btnSave.Location = new System.Drawing.Point(12, 468);
+            this.btnSave.Location = new System.Drawing.Point(12, 472);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(35, 35);
             this.btnSave.TabIndex = 1;
@@ -79,9 +81,10 @@
             // 
             // btnReload
             // 
+            this.btnReload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnReload.ImageKey = "reload.png";
             this.btnReload.ImageList = this.imageList1;
-            this.btnReload.Location = new System.Drawing.Point(53, 468);
+            this.btnReload.Location = new System.Drawing.Point(53, 472);
             this.btnReload.Name = "btnReload";
             this.btnReload.Size = new System.Drawing.Size(35, 35);
             this.btnReload.TabIndex = 1;
@@ -90,9 +93,10 @@
             // 
             // btnExit
             // 
+            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.ImageKey = "exit.png";
             this.btnExit.ImageList = this.imageList1;
-            this.btnExit.Location = new System.Drawing.Point(897, 468);
+            this.btnExit.Location = new System.Drawing.Point(928, 472);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(35, 35);
             this.btnExit.TabIndex = 2;
@@ -103,7 +107,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(944, 511);
+            this.ClientSize = new System.Drawing.Size(975, 515);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnReload);
             this.Controls.Add(this.btnSave);
