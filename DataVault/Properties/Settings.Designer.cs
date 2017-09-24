@@ -32,5 +32,15 @@ namespace DataVault.Properties {
                 return ((string)(this["RenderFarmConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(localdb)\\v11.0;Initial Catalog=RenderFarm;Integrated Security=True")]
+        public string RenderFarmConnectionString1 {
+            get {
+                return ((string)(this["RenderFarmConnectionString1"]));
+            }
+        }
     }
 }

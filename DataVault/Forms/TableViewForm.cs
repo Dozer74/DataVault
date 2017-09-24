@@ -15,14 +15,21 @@ namespace DataVault
     {
         private readonly string tableName;
         private readonly MainForm parent;
+        private int pageNumber;
 
         private bool Changed
         {
             set
             {
                 var status = !value ? "Saved" : "Modified";
-                Text = $"Table: {tableName} - [{status}]";
+                toolStatus.Text = $"Table: {tableName} - [{status}]";
             }
+        }
+
+        private int PageNumber
+        {
+            get => pageNumber;
+            set => pageNumber = value;
         }
 
         public TableViewForm(string tableName, MainForm parent)
@@ -30,12 +37,13 @@ namespace DataVault
             this.tableName = tableName;
             this.parent = parent;
             InitializeComponent();
-            
+
             dataGridView1.AutoGenerateColumns = true;
             dataGridView1.DataMember = tableName;
             dataGridView1.Columns[0].ReadOnly = true; // id column
 
             Changed = false;
+            cbPageSize.SelectedIndex = 0;
         }
 
         private void ReloadRecords()
@@ -85,7 +93,7 @@ namespace DataVault
         private void btnExit_Click(object sender, EventArgs e)
         {
             entityDataSource1.CancelChanges();
-            this.Close();
+            Close();
         }
 
         private void TableViewForm_FormClosing(object sender, FormClosingEventArgs e)

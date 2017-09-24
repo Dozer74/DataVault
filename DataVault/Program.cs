@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using DataVault.Forms;
 
 namespace DataVault
 {
@@ -13,7 +14,7 @@ namespace DataVault
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Application.Run(new TestForm());
         }
     }
 }

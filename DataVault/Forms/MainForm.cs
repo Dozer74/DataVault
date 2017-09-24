@@ -21,6 +21,12 @@ namespace DataVault
         private void MainForm_Load(object sender, EventArgs e)
         {
             comboBox1.SelectedIndex = 0;
+            using (var db = new RenderFarm())
+            {
+                var dbUsers = db.Users;
+                dbUsers.Remove(dbUsers.FirstOrDefault());
+                db.SaveChanges();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

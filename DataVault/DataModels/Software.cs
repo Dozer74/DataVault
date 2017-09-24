@@ -1,3 +1,6 @@
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace DataVault.DataModels
 {
     using System.Collections.Generic;
@@ -17,9 +20,6 @@ namespace DataVault.DataModels
         [Required]
         public virtual SoftwareDeveloper SoftwareDeveloper { get; set; }
 
-        public override string ToString()
-        {
-            return $"{SoftwareDeveloper?.Name} {Version}";
-        }
+
     }
 }
