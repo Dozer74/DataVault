@@ -53,6 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlBar.Designer.cs">
+      <DependentUpon>ControlBar.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataModels\GpuManufactor.cs" />
     <Compile Include="DataModels\GPU.cs" />
     <Compile Include="DataModels\Node.cs" />
@@ -99,9 +105,15 @@
     <Compile Include="Forms\Users\UserViewForm.Designer.cs">
       <DependentUpon>UserViewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ModelDiagram.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ControlBar.resx">
+      <DependentUpon>ControlBar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\TableViewForm.resx">
       <DependentUpon>TableViewForm.cs</DependentUpon>
     </EmbeddedResource>
