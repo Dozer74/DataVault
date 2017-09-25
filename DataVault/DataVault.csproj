@@ -81,16 +81,22 @@
     <Compile Include="Forms\TestForm.Designer.cs">
       <DependentUpon>TestForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\UserFiltersForm.cs">
+    <Compile Include="Forms\Users\AddEditUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\UserFiltersForm.Designer.cs">
+    <Compile Include="Forms\Users\AddEditUserForm.Designer.cs">
+      <DependentUpon>AddEditUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Users\UserFiltersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Users\UserFiltersForm.Designer.cs">
       <DependentUpon>UserFiltersForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\UserViewForm.cs">
+    <Compile Include="Forms\Users\UserViewForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\UserViewForm.Designer.cs">
+    <Compile Include="Forms\Users\UserViewForm.Designer.cs">
       <DependentUpon>UserViewForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ModelDiagram.cs" />
@@ -105,10 +111,13 @@
     <EmbeddedResource Include="Forms\TestForm.resx">
       <DependentUpon>TestForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UserFiltersForm.resx">
+    <EmbeddedResource Include="Forms\Users\AddEditUserForm.resx">
+      <DependentUpon>AddEditUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Users\UserFiltersForm.resx">
       <DependentUpon>UserFiltersForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UserViewForm.resx">
+    <EmbeddedResource Include="Forms\Users\UserViewForm.resx">
       <DependentUpon>UserViewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -152,9 +161,7 @@
       <Name>EF6Winforms</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="img\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="desc.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -162,6 +169,13 @@
     <Content Include="email.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="imgs\add.png" />
+    <Content Include="imgs\delete.png" />
+    <Content Include="imgs\filter.png" />
+    <Content Include="imgs\left-arrow.png" />
+    <Content Include="imgs\pencil.png" />
+    <Content Include="imgs\refresh.png" />
+    <Content Include="imgs\right-arrow.png" />
     <Content Include="projects.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
