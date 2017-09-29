@@ -229,5 +229,10 @@ namespace DataVault.Forms.Users
             pageIndex = 0;
             ReloadData();
         }
+
+        private void UserViewForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Owner.Show();
+        }
     }
 }

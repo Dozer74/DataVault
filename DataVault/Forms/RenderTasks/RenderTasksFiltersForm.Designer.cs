@@ -65,7 +65,7 @@
             this.btnOk.Margin = new System.Windows.Forms.Padding(4);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(112, 27);
-            this.btnOk.TabIndex = 0;
+            this.btnOk.TabIndex = 12;
             this.btnOk.Text = "Применить";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btn_Click);
@@ -79,7 +79,7 @@
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(102, 27);
-            this.btnCancel.TabIndex = 0;
+            this.btnCancel.TabIndex = 13;
             this.btnCancel.Text = "Отмена";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btn_Click);
@@ -93,7 +93,7 @@
             this.btnIgnore.Margin = new System.Windows.Forms.Padding(4);
             this.btnIgnore.Name = "btnIgnore";
             this.btnIgnore.Size = new System.Drawing.Size(81, 27);
-            this.btnIgnore.TabIndex = 0;
+            this.btnIgnore.TabIndex = 14;
             this.btnIgnore.Text = "Сбросить";
             this.btnIgnore.UseVisualStyleBackColor = true;
             this.btnIgnore.Click += new System.EventHandler(this.btn_Click);
@@ -113,7 +113,7 @@
             this.name.Location = new System.Drawing.Point(120, 6);
             this.name.Name = "name";
             this.name.Size = new System.Drawing.Size(252, 26);
-            this.name.TabIndex = 2;
+            this.name.TabIndex = 1;
             // 
             // label3
             // 
@@ -148,7 +148,7 @@
             this.priceFrom.Location = new System.Drawing.Point(161, 38);
             this.priceFrom.Name = "priceFrom";
             this.priceFrom.Size = new System.Drawing.Size(89, 26);
-            this.priceFrom.TabIndex = 6;
+            this.priceFrom.TabIndex = 2;
             this.priceFrom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.balanceFrom_KeyPress);
             // 
             // priceTo
@@ -156,7 +156,7 @@
             this.priceTo.Location = new System.Drawing.Point(283, 38);
             this.priceTo.Name = "priceTo";
             this.priceTo.Size = new System.Drawing.Size(89, 26);
-            this.priceTo.TabIndex = 6;
+            this.priceTo.TabIndex = 3;
             this.priceTo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.balanceFrom_KeyPress);
             // 
             // label6
@@ -194,7 +194,7 @@
             this.startDateFrom.Name = "startDateFrom";
             this.startDateFrom.ShowCheckBox = true;
             this.startDateFrom.Size = new System.Drawing.Size(116, 26);
-            this.startDateFrom.TabIndex = 12;
+            this.startDateFrom.TabIndex = 6;
             // 
             // startDateTo
             // 
@@ -203,21 +203,21 @@
             this.startDateTo.Name = "startDateTo";
             this.startDateTo.ShowCheckBox = true;
             this.startDateTo.Size = new System.Drawing.Size(116, 26);
-            this.startDateTo.TabIndex = 13;
+            this.startDateTo.TabIndex = 7;
             // 
             // renderTimeTo
             // 
             this.renderTimeTo.Location = new System.Drawing.Point(283, 70);
             this.renderTimeTo.Name = "renderTimeTo";
             this.renderTimeTo.Size = new System.Drawing.Size(89, 26);
-            this.renderTimeTo.TabIndex = 17;
+            this.renderTimeTo.TabIndex = 5;
             // 
             // renderTimeFrom
             // 
             this.renderTimeFrom.Location = new System.Drawing.Point(161, 70);
             this.renderTimeFrom.Name = "renderTimeFrom";
             this.renderTimeFrom.Size = new System.Drawing.Size(89, 26);
-            this.renderTimeFrom.TabIndex = 18;
+            this.renderTimeFrom.TabIndex = 4;
             // 
             // label9
             // 
@@ -262,20 +262,20 @@
             this.project.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.project.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.project.FormattingEnabled = true;
-            this.project.Location = new System.Drawing.Point(141, 166);
+            this.project.Location = new System.Drawing.Point(161, 166);
             this.project.Name = "project";
-            this.project.Size = new System.Drawing.Size(231, 26);
-            this.project.TabIndex = 20;
+            this.project.Size = new System.Drawing.Size(211, 26);
+            this.project.TabIndex = 9;
             // 
             // software
             // 
             this.software.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.software.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.software.FormattingEnabled = true;
-            this.software.Location = new System.Drawing.Point(141, 198);
+            this.software.Location = new System.Drawing.Point(161, 198);
             this.software.Name = "software";
-            this.software.Size = new System.Drawing.Size(231, 26);
-            this.software.TabIndex = 22;
+            this.software.Size = new System.Drawing.Size(211, 26);
+            this.software.TabIndex = 11;
             // 
             // label12
             // 
@@ -290,20 +290,20 @@
             // cbProjectEnabled
             // 
             this.cbProjectEnabled.AutoSize = true;
-            this.cbProjectEnabled.Location = new System.Drawing.Point(120, 172);
+            this.cbProjectEnabled.Location = new System.Drawing.Point(136, 173);
             this.cbProjectEnabled.Name = "cbProjectEnabled";
             this.cbProjectEnabled.Size = new System.Drawing.Size(15, 14);
-            this.cbProjectEnabled.TabIndex = 23;
+            this.cbProjectEnabled.TabIndex = 8;
             this.cbProjectEnabled.UseVisualStyleBackColor = true;
             this.cbProjectEnabled.CheckedChanged += new System.EventHandler(this.cbSoftwareEnabled_CheckedChanged);
             // 
             // cbSoftwareEnabled
             // 
             this.cbSoftwareEnabled.AutoSize = true;
-            this.cbSoftwareEnabled.Location = new System.Drawing.Point(120, 204);
+            this.cbSoftwareEnabled.Location = new System.Drawing.Point(136, 204);
             this.cbSoftwareEnabled.Name = "cbSoftwareEnabled";
             this.cbSoftwareEnabled.Size = new System.Drawing.Size(15, 14);
-            this.cbSoftwareEnabled.TabIndex = 24;
+            this.cbSoftwareEnabled.TabIndex = 10;
             this.cbSoftwareEnabled.UseVisualStyleBackColor = true;
             this.cbSoftwareEnabled.CheckedChanged += new System.EventHandler(this.cbSoftwareEnabled_CheckedChanged);
             // 

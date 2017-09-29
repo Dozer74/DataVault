@@ -46,7 +46,7 @@ namespace DataVault.Forms.RenderTasks
                 Text = "Редактирование задачи";
             }
 
-            fileds = new Control[] {taskName, taskPrice, taskRenderTime };
+            fileds = new Control[] {taskName, taskPrice, taskRenderTime,taskProject,taskSoftware };
 
             foreach (var control in fileds)
             {
@@ -130,8 +130,8 @@ namespace DataVault.Forms.RenderTasks
             task.Price = decimal.Parse(taskPrice.Text);
             task.RenderTime = int.Parse(taskRenderTime.Text);
             task.StartTime = taskStartDate.Value;
-            task.Project = db.Projects.Find((string) taskProject.SelectedItem);
-            task.Software = db.Softwares.Find((string)taskSoftware.SelectedItem);
+            task.Project = (Project)taskProject.SelectedItem;
+            task.Software = (Software)taskSoftware.SelectedItem;
             task.Description = taskDesc.Text;
             
             db.RenderTasks.AddOrUpdate(task);

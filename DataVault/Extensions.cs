@@ -1,35 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Common;
-using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Linq.Expressions;
+using System.Reflection;
 
 namespace DataVault
 {
-    static class Extensions
+    public static class LinqExtensions
     {
-        public static DataTable DataTable(this DbContext context, string sqlQuery)
+        private static PropertyInfo GetPropertyInfo(Type objType, string name)
         {
-            DbProviderFactory dbFactory = DbProviderFactories.GetFactory(context.Database.Connection);
+            var properties = objType.GetProperties();
+            var matchedProperty = properties.FirstOrDefault(p => p.Name == name);
+            if (matchedProperty == null)
+                throw new ArgumentException("name");
 
-            using (var cmd = dbFactory.CreateCommand())
-            {
-                cmd.Connection = context.Database.Connection;
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = sqlQuery;
-                using (DbDataAdapter adapter = dbFactory.CreateDataAdapter())
-                {
-                    adapter.SelectCommand = cmd;
+            return matchedProperty;
+        }
 
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
+        private static LambdaExpression GetOrderExpression(Type objType, PropertyInfo pi)
+        {
+            var paramExpr = Expression.Parameter(objType);
+            var propAccess = Expression.PropertyOrField(paramExpr, pi.Name);
+            var expr = Expression.Lambda(propAccess, paramExpr);
+            return expr;
+        }
 
-                    return dt;
-                }
-            }
+        public static IEnumerable<T> OrderBy<T>(this IEnumerable<T> query, string name)
+        {
+            var propInfo = GetPropertyInfo(typeof(T), name);
+            var expr = GetOrderExpression(typeof(T), propInfo);
+
+            var method = typeof(Enumerable).GetMethods()
+                .FirstOrDefault(m => m.Name == "OrderBy" && m.GetParameters().Length == 2);
+            var genericMethod = method.MakeGenericMethod(typeof(T), propInfo.PropertyType);
+            return (IEnumerable<T>) genericMethod.Invoke(null, new object[] {query, expr.Compile()});
+        }
+
+        public static IQueryable<T> OrderBy<T>(this IQueryable<T> query, string name)
+        {
+            var propInfo = GetPropertyInfo(typeof(T), name);
+            var expr = GetOrderExpression(typeof(T), propInfo);
+
+            var method = typeof(Queryable).GetMethods()
+                .FirstOrDefault(m => m.Name == "OrderBy" && m.GetParameters().Length == 2);
+            var genericMethod = method.MakeGenericMethod(typeof(T), propInfo.PropertyType);
+            return (IQueryable<T>) genericMethod.Invoke(null, new object[] {query, expr});
         }
     }
 }

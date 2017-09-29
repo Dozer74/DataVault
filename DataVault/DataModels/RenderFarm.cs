@@ -50,7 +50,7 @@ namespace DataVault.DataModels
         }
     }
 
-    public class DbInitializer : DropCreateDatabaseIfModelChanges<RenderFarm>
+    public class DbInitializer : DropCreateDatabaseAlways<RenderFarm>
     {
         readonly Random rand = new Random(42);
 
@@ -132,16 +132,16 @@ namespace DataVault.DataModels
 
             var software = new[]
             {
-                new Software {SoftwareDeveloper = softwareDevelopers[0], Version = "Autodesk 3DS Max 2017"},
-                new Software {SoftwareDeveloper = softwareDevelopers[0], Version = "Autodesk 3DS Max 2016"},
-                new Software {SoftwareDeveloper = softwareDevelopers[0], Version = "Autodesk 3DS Max 2015"},
-                new Software {SoftwareDeveloper = softwareDevelopers[0], Version = "Autodesk 3DS Max 2014"},
+                new Software {SoftwareDeveloper = softwareDevelopers[0], Version = "2017"},
+                new Software {SoftwareDeveloper = softwareDevelopers[0], Version = "2016"},
+                new Software {SoftwareDeveloper = softwareDevelopers[0], Version = "2015"},
+                new Software {SoftwareDeveloper = softwareDevelopers[0], Version = "2014"},
 
-                new Software {SoftwareDeveloper = softwareDevelopers[1], Version = "Cinema R 18"},
-                new Software {SoftwareDeveloper = softwareDevelopers[1], Version = "Cinema R 17"},
+                new Software {SoftwareDeveloper = softwareDevelopers[1], Version = "R 18"},
+                new Software {SoftwareDeveloper = softwareDevelopers[1], Version = "R 17"},
 
-                new Software {SoftwareDeveloper = softwareDevelopers[2], Version = "Blender Community"},
-                new Software {SoftwareDeveloper = softwareDevelopers[2], Version = "Blender 2015"},
+                new Software {SoftwareDeveloper = softwareDevelopers[2], Version = "Community"},
+                new Software {SoftwareDeveloper = softwareDevelopers[2], Version = "2015"},
             };
 
             var projects = File.ReadAllLines("projects.txt")

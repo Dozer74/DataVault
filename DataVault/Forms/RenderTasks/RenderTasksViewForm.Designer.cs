@@ -31,7 +31,7 @@ namespace DataVault.Forms.RenderTasks
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserViewForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RenderTasksViewForm));
             this.dataGrid = new DataVault.GridView();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.controlBar = new DataVault.ControlBar();
@@ -90,7 +90,7 @@ namespace DataVault.Forms.RenderTasks
             this.controlBar.StatusText = "Страница 1 [20/100]";
             this.controlBar.TabIndex = 8;
             // 
-            // UserViewForm
+            // RenderTasksViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -100,8 +100,9 @@ namespace DataVault.Forms.RenderTasks
             this.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(832, 251);
-            this.Name = "UserViewForm";
+            this.Name = "RenderTasksViewForm";
             this.Text = "UserViewForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RenderTasksViewForm_FormClosing);
             this.Load += new System.EventHandler(this.UserViewForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
             this.ResumeLayout(false);

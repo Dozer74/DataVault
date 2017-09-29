@@ -18,7 +18,7 @@ namespace DataVault
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new RenderTaskFilterForm());
+            Application.Run(new MainForm());
         }
     }
 }

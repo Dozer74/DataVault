@@ -265,7 +265,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddEditRenderTaskForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Создание пользователя";
+            this.Text = "Создание задачи";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

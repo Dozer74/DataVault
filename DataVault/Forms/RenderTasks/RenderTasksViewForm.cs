@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using DataVault.DataModels;
 using DataVault.Forms.Users;
+using ff = DataVault.Forms.RenderTasks.RenderTaskFilterForm;
 
 namespace DataVault.Forms.RenderTasks
 {
@@ -14,11 +15,11 @@ namespace DataVault.Forms.RenderTasks
         private RenderFarm db = new RenderFarm();
         private int pageCount;
         private int pageIndex;
-        
+
         public RenderTasksViewForm()
         {
             InitializeComponent();
-            
+
             controlBar.FilterButtonClick += (s, e) => FilterTasks();
             controlBar.AddButtonClick += (s, e) => AddTask();
             controlBar.EditButtonClick += (s, e) => EditTask();
@@ -31,32 +32,39 @@ namespace DataVault.Forms.RenderTasks
 
         private void UserViewForm_Load(object sender, EventArgs e)
         {
-            db.RenderTasks.Load();
             ReloadData();
         }
 
         private void ReloadData()
         {
             // filter data
-            /*var filterName = UserFiltersForm.TaskName;
-            var filterMail = UserFiltersForm.FilterEmail;
-            var filterBalanceFrom = UserFiltersForm.TaskPriceFrom;
-            var filterBalanceTo = UserFiltersForm.TaskPriceTo;
-
-            var usersList = db.Users.Local.Where(u =>
+            var tasksList = db.RenderTasks.ToList().Where(t =>
             {
-                if (filterName != "" && !u.Name.ToLower().StartsWith(filterName))
+                if (ff.TaskName != "" && !t.Name.ToLower().StartsWith(ff.TaskName))
                     return false;
-                if (filterMail != "" && !u.Email.ToLower().StartsWith(filterMail))
+
+                if (ff.TaskProjectEnabled && t.Project.Id != ff.TaskProject.Id)
                     return false;
-                if (filterBalanceFrom > -1 && u.Balance < filterBalanceFrom)
+                if (ff.TaskSoftwareEnabled && t.Software.Id != ff.TaskSoftware.Id)
                     return false;
-                if (filterBalanceTo > -1 && u.Balance > filterBalanceTo)
+
+                if (ff.TaskStartFromEnabled && t.StartTime < ff.TaskStartFrom)
+                    return false;
+                if (ff.TaskStartToEnabled && t.StartTime > ff.TaskStartTo)
+                    return false;
+
+                if (ff.TaskPriceFrom != -1m && t.Price < ff.TaskPriceFrom)
+                    return false;
+                if (ff.TaskPriceTo != -1m && t.Price > ff.TaskPriceTo)
+                    return false;
+
+                if (ff.TaskTimeFrom != -1m && t.RenderTime < ff.TaskTimeFrom)
+                    return false;
+                if (ff.TaskTimeTo != -1m && t.RenderTime > ff.TaskTimeTo)
                     return false;
 
                 return true;
-            }).ToList();*/
-            var tasksList = db.RenderTasks.Local.ToList();
+            }).ToList();
 
             // show status
             var itemsCount = tasksList.Count;
@@ -66,38 +74,36 @@ namespace DataVault.Forms.RenderTasks
             FormatStatusLabel(pageSize, itemsCount);
 
             // sort data
-            /*IEnumerable<User> users = new List<User>();
-            switch (dataGrid.SortColumnIndex)
+            var actions = new List<Func<RenderTask, object>>
             {
-                case 0:
-                    users = usersList.OrderBy(u => u.Id);
-                    break;
-                case 1:
-                    users = usersList.OrderBy(u => u.Name);
-                    break;
-                case 2:
-                    users = usersList.OrderBy(u => u.Email);
-                    break;
-                case 3:
-                    users = usersList.OrderBy(u => u.Balance);
-                    break;
-            }*/
-            IEnumerable<RenderTask> tasks = tasksList.OrderBy(t => t.Id);
+                t => t.Id,
+                t => t.Name,
+                t => t.Price,
+                t => t.StartTime,
+                t => t.RenderTime,
+                t => t.Project.Name,
+                t => t.Software.FullName
+            };
+            IEnumerable<RenderTask> tasks = tasksList.OrderBy(actions[dataGrid.SortColumnIndex]);
 
             if (dataGrid.BackSort)
                 tasks = tasks.Reverse();
 
-            // set pagination
-            tasks = tasks.Skip(pageSize * pageIndex).Take(pageSize);
+            // set pagination and map columns
+            var data = tasks.Skip(pageSize * pageIndex).Take(pageSize).Select(t => new
+            {
+                Id = t.Id,
+                Name = t.Name,
+                Price = t.Price,
+                StartTime = t.StartTime,
+                RenderTime = t.RenderTime,
+                Project = t.Project.Name,
+                Software = t.Software.FullName,
+                Description = t.Description
+            });
 
             // set buttons states
-            dataGrid.DataSource = tasks.ToList();
-
-            foreach (var i in new [] {6,7,8})
-            {
-                dataGrid.Columns[i].Visible = false;
-
-            }
+            dataGrid.DataSource = data.ToList();
 
             controlBar.NextPageButtonEnabled = pageIndex < pageCount - 1;
             controlBar.PrevPageButtonEnabled = pageIndex > 0;
@@ -127,7 +133,7 @@ namespace DataVault.Forms.RenderTasks
 
         private void FilterTasks()
         {
-            var ff = new UserFiltersForm();
+            var ff = new ff();
             var result = ff.ShowDialog(this);
             if (result != DialogResult.Cancel)
             {
@@ -143,9 +149,8 @@ namespace DataVault.Forms.RenderTasks
 
         private void AddTask()
         {
-            if (new AddEditUserForm().ShowDialog() == DialogResult.OK)
+            if (new AddEditRenderTaskForm().ShowDialog() == DialogResult.OK)
             {
-                db.Users.Load();
                 ReloadData();
             }
         }
@@ -153,10 +158,10 @@ namespace DataVault.Forms.RenderTasks
         private void EditTask()
         {
             var id = (int) dataGrid.SelectedRows[0].Cells[0].Value;
-            var user = db.Users.Find(id);
-            if (new AddEditUserForm(user).ShowDialog() == DialogResult.OK)
+            var task = db.RenderTasks.ToList().Find(t => t.Id == id);
+            if (new AddEditRenderTaskForm(task).ShowDialog() == DialogResult.OK)
             {
-                db.Users.Load();
+                db.RenderTasks.Load();
                 ReloadData();
             }
         }
@@ -177,24 +182,26 @@ namespace DataVault.Forms.RenderTasks
 
         private void dataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex<0) // header cell
+            if (e.RowIndex < 0) // header cell
                 return;
 
             EditTask();
         }
-        
+
         private void ReloadTasks()
         {
             pageIndex = 0;
             dataGrid.SortColumnIndex = 0;
             dataGrid.BackSort = false;
+
+            db.RenderTasks.Load();
             ReloadData();
         }
-        
+
         private void RemoveTask()
         {
             var id = (int) dataGrid.SelectedRows[0].Cells[0].Value;
-            db.Users.Remove(db.Users.Find(id));
+            db.RenderTasks.Remove(db.RenderTasks.Find(id));
 
             try
             {
@@ -202,16 +209,16 @@ namespace DataVault.Forms.RenderTasks
             }
             catch (DbUpdateException)
             {
-                var username = (string) dataGrid.SelectedRows[0].Cells[1].Value;
+                var name = (string) dataGrid.SelectedRows[0].Cells[1].Value;
                 MessageBox.Show(this,
-                    $"Невозможно удалить пользователя {username}: в базе имеются связанные с ним задачи.", "Ошибка",
+                    $"Невозможно удалить задачу {name}: в базе имеются связанные с ней данные", "Ошибка",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 db.Dispose();
                 db = new RenderFarm();
                 return;
             }
 
-            db.Users.Load();
+            db.RenderTasks.Load();
             ReloadData();
         }
 
@@ -236,6 +243,11 @@ namespace DataVault.Forms.RenderTasks
         {
             pageIndex = 0;
             ReloadData();
+        }
+        
+        private void RenderTasksViewForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Owner.Show();
         }
     }
 }

@@ -100,6 +100,7 @@
             this.MinimumSize = new System.Drawing.Size(832, 251);
             this.Name = "UserViewForm";
             this.Text = "UserViewForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UserViewForm_FormClosing);
             this.Load += new System.EventHandler(this.UserViewForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
             this.ResumeLayout(false);
