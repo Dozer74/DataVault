@@ -20,6 +20,7 @@ namespace DataVault.DataModels
         [Required]
         public virtual SoftwareDeveloper SoftwareDeveloper { get; set; }
 
-
+        [NotMapped]
+        public string FullName => $"{SoftwareDeveloper.Name} {Version}";
     }
 }

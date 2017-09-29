@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
+using DataVault.DataModels;
 using DataVault.Forms;
+using DataVault.Forms.RenderTasks;
 using DataVault.Forms.Users;
 
 namespace DataVault
@@ -15,7 +18,7 @@ namespace DataVault
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new UserViewForm());
+            Application.Run(new RenderTaskFilterForm());
         }
     }
 }

@@ -69,23 +69,29 @@
     <Compile Include="DataModels\Software.cs" />
     <Compile Include="DataModels\User.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="Forms\TableViewForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\TableViewForm.Designer.cs">
-      <DependentUpon>TableViewForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\TestForm.cs">
+    <Compile Include="Forms\RenderTasks\AddEditRenderTaskForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\TestForm.Designer.cs">
-      <DependentUpon>TestForm.cs</DependentUpon>
+    <Compile Include="Forms\RenderTasks\AddEditRenderTaskForm.Designer.cs">
+      <DependentUpon>AddEditRenderTaskForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RenderTasks\RenderTasksViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RenderTasks\RenderTasksViewForm.Designer.cs">
+      <DependentUpon>RenderTasksViewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RenderTasks\RenderTasksFiltersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RenderTasks\RenderTasksFiltersForm.Designer.cs">
+      <DependentUpon>RenderTasksFiltersForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Users\AddEditUserForm.cs">
       <SubType>Form</SubType>
@@ -114,14 +120,17 @@
     <EmbeddedResource Include="ControlBar.resx">
       <DependentUpon>ControlBar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\TableViewForm.resx">
-      <DependentUpon>TableViewForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\TestForm.resx">
-      <DependentUpon>TestForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\RenderTasks\AddEditRenderTaskForm.resx">
+      <DependentUpon>AddEditRenderTaskForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RenderTasks\RenderTasksViewForm.resx">
+      <DependentUpon>RenderTasksViewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RenderTasks\RenderTasksFiltersForm.resx">
+      <DependentUpon>RenderTasksFiltersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Users\AddEditUserForm.resx">
       <DependentUpon>AddEditUserForm.cs</DependentUpon>

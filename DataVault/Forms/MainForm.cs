@@ -33,9 +33,9 @@ namespace DataVault
         {
             var tableName = (string) comboBox1.SelectedItem;
             tableName = tableName.Replace(" ", "");
-            TableViewForm form = new TableViewForm(tableName,this);
-            form.Show(this);
-            this.Hide();
+            //TableViewForm form = new TableViewForm(tableName,this);
+            //form.Show(this);
+            //this.Hide();
         }
     }
 }
