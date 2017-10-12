@@ -39,7 +39,7 @@ namespace DataVault.Forms.RenderTasks
                 taskPrice.Text = task.Price.ToString();
                 taskRenderTime.Text = task.RenderTime.ToString();
                 taskDesc.Text = task.Description ?? "";
-                taskProject.SelectedItem = db.Projects.Local.First(p => p.Id==task.Id);
+                taskProject.SelectedItem = db.Projects.Local.First(p => p.Id==task.Project.Id);
                 taskSoftware.SelectedItem = db.Softwares.Local.First(s => s.Id == task.Software.Id);
 
                 btnOk.Text = "Обновить";

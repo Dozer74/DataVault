@@ -15,10 +15,6 @@ namespace DataVault
 {
     public partial class MainForm : Form
     {
-        readonly Form[] forms = {
-            new UserViewForm(),
-            new RenderTasksViewForm()
-        };
 
         public MainForm()
         {
@@ -32,6 +28,10 @@ namespace DataVault
 
         private void button1_Click(object sender, EventArgs e)
         {
+            var forms = new Form[] {
+                new UserViewForm(),
+                new RenderTasksViewForm()
+            };
 
             forms[comboBox1.SelectedIndex].Show(this);
             this.Hide();

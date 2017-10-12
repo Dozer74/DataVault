@@ -50,7 +50,7 @@ namespace DataVault.DataModels
         }
     }
 
-    public class DbInitializer : DropCreateDatabaseAlways<RenderFarm>
+    public class DbInitializer : DropCreateDatabaseIfModelChanges<RenderFarm>
     {
         readonly Random rand = new Random(42);
 

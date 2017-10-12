@@ -101,7 +101,7 @@ namespace DataVault.Forms.RenderTasks
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(832, 251);
             this.Name = "RenderTasksViewForm";
-            this.Text = "UserViewForm";
+            this.Text = "RenderTasksViewForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RenderTasksViewForm_FormClosing);
             this.Load += new System.EventHandler(this.UserViewForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();

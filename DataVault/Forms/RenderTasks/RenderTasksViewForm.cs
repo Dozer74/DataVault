@@ -82,7 +82,8 @@ namespace DataVault.Forms.RenderTasks
                 t => t.StartTime,
                 t => t.RenderTime,
                 t => t.Project.Name,
-                t => t.Software.FullName
+                t => t.Software.FullName,
+                t => t.Description
             };
             IEnumerable<RenderTask> tasks = tasksList.OrderBy(actions[dataGrid.SortColumnIndex]);
 
